@@ -1,0 +1,68 @@
+{
+  "name": "pkeygen",
+  "version": "0.1.0",
+  "description": "Parse, convert and generate SSH keys (OpenSSH, PEM, PuTTY PPK, RFC 4716, JWK) with zero dependencies",
+  "keywords": [
+    "ssh",
+    "ssh-key",
+    "openssh",
+    "pem",
+    "pkcs8",
+    "pkcs1",
+    "putty",
+    "ppk",
+    "rfc4716",
+    "fingerprint",
+    "key-conversion"
+  ],
+  "license": "MIT",
+  "author": "Naoto Nakamura",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakky/pkeygen.git"
+  },
+  "homepage": "https://github.com/nakky/pkeygen#readme",
+  "bugs": {
+    "url": "https://github.com/nakky/pkeygen/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate:blowfish": "node scripts/generate-blowfish-constants.mjs",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "tsup": "^8.5.1",
+    "typescript": "~5.9.0",
+    "vitest": "^3.2.4"
+  }
+}
